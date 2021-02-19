@@ -1,1 +1,9 @@
 /* Add application styles & imports to this file! */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.btn {
+  margin: 0px 5px 0px 0px;
+}
+.btn-group > :first-child:not(.dropdown-toggle):not(:last-child).btn {
+  border-radius: 4px;
+}
