@@ -9,14 +9,11 @@ import {
   selector: "[appDropdown]"
 })
 export class DropdownDirective {
-  @HostBinding("class") ddClass: string;
+  @HostBinding("class.open") isOpen: boolean = false;
 
   constructor(private elRef: ElementRef) {}
 
-  @HostListener("click") onClick() {
-    const currentClass: string = this.elRef.nativeElement.className;
-    currentClass.includes("open")
-      ? (this.ddClass = currentClass.replace("open", "").trim())
-      : (this.ddClass = currentClass.concat(" open"));
+  @HostListener("document:click", ['$event']) toggleOpen(event: Event) {
+    this.isOpen = this.elRef.nativeElement.contains(event.target) ? !this.isOpen : false;
   }
 }
