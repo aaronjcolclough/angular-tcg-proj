@@ -2,12 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { ShoppingListService } from "../services/shopping-list.service";
 
 import { Ingredient } from "./ingredient.model";
-import { ShoppingListService } from "../services/shopping-list.service";
 
 @Component({
   selector: "app-shopping-list",
   templateUrl: "./shopping-list.component.html",
-  styleUrls: ["./shopping-list.component.css"]
+  styleUrls: ["./shopping-list.component.css"],
+  providers: [ShoppingListService]
 })
 export class ShoppingListComponent implements OnInit {
   ingredients: Ingredient[] = [];
@@ -19,6 +19,6 @@ export class ShoppingListComponent implements OnInit {
   }
 
   onAddIngredient(ingredient: Ingredient) {
-    this.ingredients.push(ingredient);
+    this.shoppingListService.onAddIngredient(ingredient);
   }
 }

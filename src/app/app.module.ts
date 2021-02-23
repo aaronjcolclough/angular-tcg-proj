@@ -1,4 +1,3 @@
-import { RecipeService } from "./services/recipe.service";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule } from "@angular/forms";
@@ -12,7 +11,6 @@ import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 import { ShoppingListEditComponent } from "./shopping-list/shopping-list-edit/shopping-list-edit.component";
 import { HeaderComponent } from "./header/header.component";
 import { DropdownDirective } from "./dropdown.directive";
-import { ShoppingListService } from "./services/shopping-list.service";
 
 @NgModule({
   imports: [BrowserModule, FormsModule],
@@ -28,6 +26,6 @@ import { ShoppingListService } from "./services/shopping-list.service";
     DropdownDirective
   ],
   bootstrap: [AppComponent],
-  providers: [ShoppingListService, RecipeService]
+  providers: []
 })
 export class AppModule {}

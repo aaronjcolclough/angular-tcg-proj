@@ -9,4 +9,8 @@ export class ShoppingListService {
   ];
 
   constructor() {}
+
+  onAddIngredient(ingredient: Ingredient) {
+    this.ingredients.push(ingredient);
+  }
 }
