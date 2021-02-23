@@ -9,7 +9,7 @@ import { Recipe } from "../recipe.model";
   styleUrls: ["./recipe-detail.component.css"]
 })
 export class RecipeDetailComponent implements OnInit {
-  recipe: Recipe;
+  @Input() recipe: Recipe;
 
   constructor(private recipeService: RecipeService) {
     // this.recipeService.recipeSelected.subscribe(
