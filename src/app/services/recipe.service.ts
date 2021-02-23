@@ -1,28 +1,28 @@
-import { EventEmitter, Injectable, Output } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Recipe } from "../recipe-book/recipe.model";
+import { Ingredient } from "../shopping-list/ingredient.model";
 
 @Injectable()
 export class RecipeService {
   recipes: Recipe[] = [
     new Recipe(
-      "Test Recipe",
-      "this is a test",
-      "https://www.cookingclassy.com/wp-content/uploads/2019/05/fiesta-rice-recipe-7.jpg"
+      "Tasty Schnitzel",
+      "A super-tasty Schitzel - just awesome!",
+      "https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.jpg",
+      [new Ingredient("Meat", 1), new Ingredient("French Fries", 20)]
     ),
     new Recipe(
-      "Test Recipe2",
-      "this is a test2",
-      "https://www.cookingclassy.com/wp-content/uploads/2019/05/fiesta-rice-recipe-7.jpg"
+      "Big Fat Burger",
+      "What else you need to say?",
+      "https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg",
+      [new Ingredient("Buns", 2), new Ingredient("Meat", 1)]
     )
   ];
-
-  // selectedRecipe: Recipe;
-  @Output() recipeSelected = new EventEmitter<Recipe>();
+  recipeSelected = new EventEmitter<Recipe>();
 
   constructor() {}
 
-  onRecipeSelect(recipe: Recipe) {
-    this.recipeSelected.emit(recipe);
-    // this.selectedRecipe = recipe;
+  getRecipes() {
+    return this.recipes.slice();
   }
 }
