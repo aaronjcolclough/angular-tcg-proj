@@ -11,9 +11,4 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  onSelect(button){
-    this.navSelected.emit(button)
-  }
-
 }

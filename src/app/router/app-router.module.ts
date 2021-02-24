@@ -5,12 +5,12 @@ import { RecipeBookComponent } from "../recipe-book/recipe-book.component";
 import { ShoppingListComponent } from "../shopping-list/shopping-list.component";
 
 const appRoutes: Routes = [
-  { path: "recipe-book", component: RecipeBookComponent },
+  { path: "", component: RecipeBookComponent },
   { path: "shopping-list", component: ShoppingListComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],
-  exports: [AppRouterModule]
+  exports: [RouterModule]
 })
 export class AppRouterModule {}

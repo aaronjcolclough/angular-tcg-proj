@@ -7,9 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent  {
   featureSelected: String = 'recipe';
-
-  onNav(featurePage){
-    this.featureSelected = featurePage;
-  }
-
 }
