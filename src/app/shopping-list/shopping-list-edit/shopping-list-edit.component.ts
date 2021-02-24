@@ -11,12 +11,12 @@ export class ShoppingListEditComponent implements OnInit {
   @ViewChild("nameInput", { static: false }) nameInputRef: ElementRef;
   @ViewChild("amountInput", { static: false }) amountInputRef: ElementRef;
 
-  constructor(private shoppingListService: ShoppingListService) {}
+  constructor(private slService: ShoppingListService) {}
 
   ngOnInit() {}
 
   onAddItem() {
-    this.shoppingListService.onAddIngredient(
+    this.slService.onAddIngredient(
       new Ingredient(
         this.nameInputRef.nativeElement.value,
         this.amountInputRef.nativeElement.value

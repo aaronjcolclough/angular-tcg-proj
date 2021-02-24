@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable } from "@angular/core";
 import { Recipe } from "../recipe-book/recipe.model";
 import { Ingredient } from "../shopping-list/ingredient.model";
+import { ShoppingListService } from "./shopping-list.service";
 
 @Injectable()
 export class RecipeService {
@@ -8,7 +9,7 @@ export class RecipeService {
     new Recipe(
       "Tasty Schnitzel",
       "A super-tasty Schitzel - just awesome!",
-      "https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/9/92/Wiener_Schnitzel_in_Wachwitz_%281%29.JPG",
       [new Ingredient("Meat", 1), new Ingredient("French Fries", 20)]
     ),
     new Recipe(
@@ -20,9 +21,13 @@ export class RecipeService {
   ];
   recipeSelected = new EventEmitter<Recipe>();
 
-  constructor() {}
+  constructor(private slService: ShoppingListService) {}
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  onAddIngredients(ingredients: Ingredient[]) {
+    this.slService.onAddIngredients(ingredients);
   }
 }

@@ -16,7 +16,24 @@ export class ShoppingListService {
   }
 
   onAddIngredient(ingredient: Ingredient) {
+    // if (this.ingredients.includes(ingredient)) {
+    //   console.log("includes");
+    //   const sortIngred = this.ingredients.find(
+    //     ingred => ingred.name === ingredient.name
+    //   );
+    //   this.ingredients[this.ingredients.indexOf(sortIngred)].amount =
+    //     sortIngred.amount + ingredient.amount;
+    // } else {
+    //   console.log("excludes");
     this.ingredients.push(ingredient);
+    // }
+
+    this.ingredientsChanged.emit(this.ingredients.slice());
+  }
+
+  onAddIngredients(ingreds: Ingredient[]) {
+    // ingreds.forEach(ingredient => this.onAddIngredient(ingredient));
+    this.ingredients.push(...ingreds);
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
 }

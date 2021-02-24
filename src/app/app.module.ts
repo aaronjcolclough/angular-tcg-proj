@@ -12,9 +12,10 @@ import { ShoppingListEditComponent } from "./shopping-list/shopping-list-edit/sh
 import { HeaderComponent } from "./header/header.component";
 import { DropdownDirective } from "./dropdown.directive";
 import { ShoppingListService } from "./services/shopping-list.service";
+import { AppRouterModule } from "./router/app-router.module";
 
 @NgModule({
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, AppRouterModule],
   declarations: [
     AppComponent,
     RecipeBookComponent,
