@@ -9,6 +9,7 @@ export class ShoppingListService {
     new Ingredient("Tomatoes", 10)
   ];
   ingredientsChanged = new Subject<Ingredient[]>();
+  ingredientSelected = new Subject<Ingredient>();
 
   constructor() {}
 
@@ -17,24 +18,25 @@ export class ShoppingListService {
   }
 
   onAddIngredient(ingredient: Ingredient) {
-    // if (this.ingredients.includes(ingredient)) {
-    //   console.log("includes");
-    //   const sortIngred = this.ingredients.find(
-    //     ingred => ingred.name === ingredient.name
-    //   );
-    //   this.ingredients[this.ingredients.indexOf(sortIngred)].amount =
-    //     sortIngred.amount + ingredient.amount;
-    // } else {
-    //   console.log("excludes");
     this.ingredients.push(ingredient);
-    // }
-
     this.ingredientsChanged.next(this.ingredients.slice());
   }
 
   onAddIngredients(ingreds: Ingredient[]) {
-    // ingreds.forEach(ingredient => this.onAddIngredient(ingredient));
     this.ingredients.push(...ingreds);
     this.ingredientsChanged.next(this.ingredients.slice());
+  }
+
+  onDeleteIngredient(ingredient: Ingredient) {
+    let index = this.ingredients.indexOf(ingredient);
+    if (this.ingredients[index].amount - ingredient.amount > 0) {
+      this.ingredients[index].amount =
+        this.ingredients[index].amount - ingredient.amount;
+    } else {
+      this.ingredients = this.ingredients.filter(
+        i => ingredient.name !== i.name
+      );
+      this.ingredientsChanged.next(this.ingredients.slice());
+    }
   }
 }
