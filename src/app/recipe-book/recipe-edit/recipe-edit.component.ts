@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Params, Router } from "@angular/router";
 import { RecipeService } from "../../services/recipe.service";
 
 @Component({
@@ -9,18 +9,19 @@ import { RecipeService } from "../../services/recipe.service";
   styleUrls: ["./recipe-edit.component.css"]
 })
 export class RecipeEditComponent implements OnInit {
-  id: number;
+  recipeId: number;
   editMode = false;
   recipeForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.id = +params["id"];
+      this.recipeId = +params["id"];
       this.editMode = params["id"] != null;
       this.initForm();
     });
@@ -28,8 +29,10 @@ export class RecipeEditComponent implements OnInit {
 
   onSubmit() {
     this.editMode
-      ? this.recipeService.onUpdateRecipe(this.id, this.recipeForm.value)
+      ? this.recipeService.onUpdateRecipe(this.recipeId, this.recipeForm.value)
       : this.recipeService.onAddRecipe(this.recipeForm.value);
+
+    this.router.navigate(["../"], { relativeTo: this.route });
   }
 
   onNewIngredient() {
@@ -44,6 +47,10 @@ export class RecipeEditComponent implements OnInit {
     );
   }
 
+  onDeleteIngredient(id: number) {
+    (<FormArray>this.recipeForm.get("ingredients")).removeAt(id);
+  }
+
   get controls() {
     return (<FormArray>this.recipeForm.get("ingredients")).controls;
   }
@@ -55,7 +62,7 @@ export class RecipeEditComponent implements OnInit {
     let recipeIngreds = new FormArray([]);
 
     if (this.editMode) {
-      const recipe = this.recipeService.getRecipe(this.id);
+      const recipe = this.recipeService.getRecipe(this.recipeId);
 
       recipeName = recipe.name;
       recipeIMG = recipe.imagePath;

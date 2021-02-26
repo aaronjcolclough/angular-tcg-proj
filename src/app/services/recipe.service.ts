@@ -43,12 +43,12 @@ export class RecipeService {
     this.recipesChanged.next(this.recipes.slice());
   }
 
-  onAddIngredients(ingredients: Ingredient[]) {
-    this.slService.onAddIngredients(ingredients);
-  }
-
   onDeleteRecipe(id: number) {
     this.recipes.splice(id, 1);
     this.recipesChanged.next(this.recipes.slice());
+  }
+
+  onAddToShopping(ingredients: Ingredient[]) {
+    this.slService.onAddIngredients(ingredients);
   }
 }
