@@ -1,4 +1,4 @@
-import { Component, OnDestroy,  OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Subscription } from "rxjs";
 import { ShoppingListService } from "../../services/shopping-list.service";
@@ -10,29 +10,48 @@ import { Ingredient } from "../ingredient.model";
   styleUrls: ["./shopping-list-edit.component.css"]
 })
 export class ShoppingListEditComponent implements OnInit, OnDestroy {
+  @ViewChild("f") slForm: NgForm;
   sub: Subscription;
   selectedIngredient: Ingredient;
+  editMode = false;
+  editIndex: number;
 
   constructor(private slService: ShoppingListService) {}
 
   ngOnInit() {
-    this.sub = this.slService.ingredientSelected.subscribe(
-      (ingredient: Ingredient) => (this.selectedIngredient = ingredient)
-    );
+    this.sub = this.slService.ingredientSelected.subscribe((index: number) => {
+      this.editMode = true;
+      this.editIndex = index;
+      this.selectedIngredient = this.slService.getIngredient(index);
+      this.slForm.setValue({
+        name: this.selectedIngredient.name,
+        amount: this.selectedIngredient.amount
+      });
+    });
   }
 
-  onAddItem(form: NgForm) {
-    this.slService.onAddIngredient(
-      new Ingredient(form.value.name, form.value.amount)
-    );
+  onSubmit(form: NgForm) {
+    !this.editMode
+      ? this.slService.onAddIngredient(
+          new Ingredient(form.value.name, form.value.amount)
+        )
+      : this.slService.onUpdateIngredient(
+          this.editIndex,
+          new Ingredient(form.value.name, form.value.amount)
+        );
+    this.onClearForm();
   }
-  onDeleteItem(form: NgForm) {
-    this.slService.onDeleteIngredient(
-      new Ingredient(form.value.name, form.value.amount)
-    );
+  onDelete() {
+    this.slService.onDeleteIngredient(this.editIndex);
+    this.onClearForm();
   }
 
-  ngOnDestroy():void{
+  onClearForm() {
+    this.slForm.reset();
+    this.editMode = false;
+  }
+
+  ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
 }
