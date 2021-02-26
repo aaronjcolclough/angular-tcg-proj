@@ -15,7 +15,7 @@
 				<ul class="dropdown-menu">
 					<li><a style="cursor: pointer" (click)="onAdd()">To Shopping List</a></li>
 					<li><a style="cursor: pointer" [routerLink]="['edit']">Edit</a></li>
-					<li><a>Delete</a></li>
+					<li><a style="cursor: pointer" [routerLink]="['../']" (click)="onDelete()">Delete</a></li>
 				</ul>
 			</div>
 		</div>

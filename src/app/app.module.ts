@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { RecipeBookComponent } from "./recipe-book/recipe-book.component";
@@ -14,10 +14,10 @@ import { HeaderComponent } from "./header/header.component";
 import { DropdownDirective } from "./dropdown.directive";
 import { ShoppingListService } from "./services/shopping-list.service";
 import { AppRouterModule } from "./router/app-router.module";
-import { RecipeHomeComponent } from './recipe-book/recipe-home/recipe-home.component';
+import { RecipeHomeComponent } from "./recipe-book/recipe-home/recipe-home.component";
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, AppRouterModule],
+  imports: [BrowserModule, FormsModule, AppRouterModule, ReactiveFormsModule],
   declarations: [
     AppComponent,
     RecipeBookComponent,
