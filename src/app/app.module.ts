@@ -19,6 +19,7 @@ import { RecipeService } from "./services/recipe.service";
 import { DataStorageService } from "./services/data-storage.service";
 import { HttpClientModule } from "@angular/common/http";
 import { RecipesResolverService } from './services/recipes-resolver.service';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { RecipesResolverService } from './services/recipes-resolver.service';
     HeaderComponent,
     DropdownDirective,
     RecipeEditComponent,
-    RecipeHomeComponent
+    RecipeHomeComponent,
+    AuthComponent
   ],
   bootstrap: [AppComponent],
   providers: [ShoppingListService, RecipeService, DataStorageService, RecipesResolverService]
