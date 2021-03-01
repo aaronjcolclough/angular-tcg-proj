@@ -1,14 +1,21 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { DataStorageService } from "../services/data-storage.service";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit {
-  @Output() navSelected = new EventEmitter<string>();
-  constructor() { }
+  constructor(private dsService: DataStorageService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  onSaveData() {
+    this.dsService.storeRecipes();
+  }
+
+  onFetchData(){
+    this.dsService.fetchRecipes().subscribe();
   }
 }
