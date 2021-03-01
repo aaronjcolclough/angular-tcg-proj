@@ -18,8 +18,10 @@ import { RecipeHomeComponent } from "./recipe-book/recipe-home/recipe-home.compo
 import { RecipeService } from "./services/recipe.service";
 import { DataStorageService } from "./services/data-storage.service";
 import { HttpClientModule } from "@angular/common/http";
-import { RecipesResolverService } from './services/recipes-resolver.service';
-import { AuthComponent } from './auth/auth.component';
+import { RecipesResolverService } from "./services/recipes-resolver.service";
+import { AuthComponent } from "./auth/auth.component";
+import { AuthService } from "./services/auth.service";
+import { LoadingSpinnerComponent } from "./shared/loading-spinner/loading-spinner.component";
 
 @NgModule({
   imports: [
@@ -41,9 +43,16 @@ import { AuthComponent } from './auth/auth.component';
     DropdownDirective,
     RecipeEditComponent,
     RecipeHomeComponent,
-    AuthComponent
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   bootstrap: [AppComponent],
-  providers: [ShoppingListService, RecipeService, DataStorageService, RecipesResolverService]
+  providers: [
+    ShoppingListService,
+    RecipeService,
+    DataStorageService,
+    RecipesResolverService,
+    AuthService
+  ]
 })
 export class AppModule {}
