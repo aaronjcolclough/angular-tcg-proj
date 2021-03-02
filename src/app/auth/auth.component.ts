@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
-import { Router } from "@angular/router";
 import { Observable } from "rxjs";
+import { Router } from "@angular/router";
+
 import { AuthResponseData, AuthService } from "../services/auth.service";
 
 @Component({
@@ -52,5 +53,9 @@ export class AuthComponent implements OnInit {
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
+  }
+
+  onHandleError() {
+    this.error = null;
   }
 }

@@ -20,6 +20,7 @@ import { RecipeService } from "./services/recipe.service";
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 import { ShoppingListEditComponent } from "./shopping-list/shopping-list-edit/shopping-list-edit.component";
 import { ShoppingListService } from "./services/shopping-list.service";
+import { AlertComponent } from './shared/alert/alert.component';
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { ShoppingListService } from "./services/shopping-list.service";
     RecipeItemComponent,
     RecipeListComponent,
     ShoppingListComponent,
-    ShoppingListEditComponent
+    ShoppingListEditComponent,
+    AlertComponent
   ],
   bootstrap: [AppComponent],
   providers: [

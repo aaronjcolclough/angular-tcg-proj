@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
+
 import { AuthService } from "../services/auth.service";
 import { DataStorageService } from "../services/data-storage.service";
 
@@ -25,7 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
-  onLogout(){
+  onLogout() {
     this.authService.logout();
   }
 
