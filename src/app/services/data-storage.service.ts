@@ -1,14 +1,11 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Subscription } from "rxjs";
 import { map, tap } from "rxjs/operators";
 import { Recipe } from "../recipe-book/recipe.model";
 import { RecipeService } from "./recipe.service";
 
 @Injectable({ providedIn: "root" })
 export class DataStorageService {
-  // sub: Subscription;
-
   constructor(
     private http: HttpClient,
     private recipesService: RecipeService
@@ -39,6 +36,6 @@ export class DataStorageService {
           });
         }),
         tap(recipes => this.recipesService.setRecipes(recipes))
-      )
+      );
   }
 }
