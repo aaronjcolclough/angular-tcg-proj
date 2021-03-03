@@ -11,15 +11,9 @@ import { AuthInterceptorService } from "./services/auth-interceptor.service";
 import { DropdownDirective } from "./dropdown.directive";
 import { HeaderComponent } from "./header/header.component";
 import { LoadingSpinnerComponent } from "./shared/loading-spinner/loading-spinner.component";
-import { RecipeBookComponent } from "./recipe-book/recipe-book.component";
-import { RecipeDetailComponent } from "./recipe-book/recipe-detail/recipe-detail.component";
-import { RecipeEditComponent } from "./recipe-book/recipe-edit/recipe-edit.component";
-import { RecipeHomeComponent } from "./recipe-book/recipe-home/recipe-home.component";
-import { RecipeItemComponent } from "./recipe-book/recipe-item/recipe-item.component";
-import { RecipeListComponent } from "./recipe-book/recipe-list/recipe-list.component";
+import { RecipesModule } from "./recipe-book/recipes.module";
 import { RecipeService } from "./services/recipe.service";
-import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
-import { ShoppingListEditComponent } from "./shopping-list/shopping-list-edit/shopping-list-edit.component";
+import { ShoppingListModule } from "./shopping-list/shopping-list.module";
 import { ShoppingListService } from "./services/shopping-list.service";
 
 @NgModule({
@@ -28,7 +22,9 @@ import { ShoppingListService } from "./services/shopping-list.service";
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RecipesModule,
+    ShoppingListModule
   ],
   declarations: [
     AlertComponent,
@@ -36,15 +32,7 @@ import { ShoppingListService } from "./services/shopping-list.service";
     AuthComponent,
     DropdownDirective,
     HeaderComponent,
-    LoadingSpinnerComponent,
-    RecipeBookComponent,
-    RecipeDetailComponent,
-    RecipeEditComponent,
-    RecipeHomeComponent,
-    RecipeItemComponent,
-    RecipeListComponent,
-    ShoppingListComponent,
-    ShoppingListEditComponent
+    LoadingSpinnerComponent
   ],
   bootstrap: [AppComponent],
   providers: [
