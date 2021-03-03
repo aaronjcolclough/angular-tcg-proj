@@ -20,7 +20,7 @@ import { RecipeService } from "./services/recipe.service";
 import { ShoppingListComponent } from "./shopping-list/shopping-list.component";
 import { ShoppingListEditComponent } from "./shopping-list/shopping-list-edit/shopping-list-edit.component";
 import { ShoppingListService } from "./services/shopping-list.service";
-import { AlertComponent } from './shared/alert/alert.component';
+import { AlertComponent } from "./shared/alert/alert.component";
 
 @NgModule({
   imports: [
@@ -31,6 +31,7 @@ import { AlertComponent } from './shared/alert/alert.component';
     ReactiveFormsModule
   ],
   declarations: [
+    AlertComponent,
     AppComponent,
     AuthComponent,
     DropdownDirective,
@@ -43,8 +44,7 @@ import { AlertComponent } from './shared/alert/alert.component';
     RecipeItemComponent,
     RecipeListComponent,
     ShoppingListComponent,
-    ShoppingListEditComponent,
-    AlertComponent
+    ShoppingListEditComponent
   ],
   bootstrap: [AppComponent],
   providers: [
